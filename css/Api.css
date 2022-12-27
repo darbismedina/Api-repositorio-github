@@ -88,10 +88,7 @@ body{
 
 /*Repos */
 .repos{
-    display: flex;
-    justify-content: center;
-    gap: .5rem;
-    margin-top: 20px;
+   text-align: center;
     
 
 }
@@ -101,4 +98,6 @@ body{
     padding: 5px 5px 5px 5px;
     font-size: 1rem;
     border-radius: 5px;
+    margin: .4rem;
+    display: inline-block;
 }

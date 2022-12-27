@@ -47,7 +47,7 @@ async function getUserData(username) {
 
 //funcion para componer e hidratar el HTML del Widget
 function showUserDate(userData) {
-    const userContent = `
+    let userContent = `
 
    
    <img src="${userData.avatar_url}" alt="avatar">
@@ -63,25 +63,27 @@ function showUserDate(userData) {
      </ul>
    </section>
 
-    <section class="repos">
-     <a href="#">repos 1</a>
-     <a href="#">repos 2</a>
-     <a href="#">repos 3</a>
-     <a href="#">repos 4</a>
-     <a href="#">repos 5</a>
-     <a href="#">repos 6</a>
-     <a href="#">repos 7</a>
-    </section>
 
- 
+     
 
    `;
+
+   if (userData.repos){
+    userContent += `<section class="repos">`
+
+    userData.repos.slice(0, 7).forEach(repo => {
+        userContent += `<a href="${repo.html_url}" target=" _blank">${repo.name}</a>`
+    });
+
+    userContent += `</section>`;
+   }
    
    userCard.innerHTML = userContent;
 }
 
 //Funcion para gestionar los errores
 function showError(error) {
-
+const errorContent = `<h1>Error ${error} 😔 Usuario no encontrado</h1>`
+userCard.innerHTML = errorContent
 
 }
